@@ -8,9 +8,7 @@ export default function UsesPage(): ReactElement {
   return (
     <main>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-        <div className="mb-6">
-          <Link href="/" className="text-[var(--accent)] hover:underline">← Back to Home</Link>
-        </div>
+        {/* Removed Back to Home link */}
         <AnimatedSection aria-label="Uses">
           <SectionHeading>Uses</SectionHeading>
           <p className="mt-4 text-[var(--muted)]">A short list of tools and hardware I use while learning and building.</p>

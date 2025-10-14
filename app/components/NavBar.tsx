@@ -1,13 +1,13 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState } from "react"; // Removed duplicate import
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
   { href: "/", label: "Home" },
-  { href: "/projects", label: "Projects" },
   { href: "/about", label: "About" },
+  { href: "/projects", label: "Projects" },
   { href: "/uses", label: "Uses" },
 ];
     // { href: "/contact", label: "Contact" },
@@ -24,6 +24,17 @@ export default function NavBar() {
     return document.documentElement.dataset.theme ?? "dark";
   });
   const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    // Scroll effect for navbar
+    const handleScroll = () => {
+      setScrolled(window.scrollY > 0);
+    };
+    window.addEventListener("scroll", handleScroll);
+    handleScroll(); // set initial state
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   useEffect(() => {
     // Initialize theme from localStorage if present
@@ -50,7 +61,13 @@ export default function NavBar() {
   }
 
   return (
-    <nav className="sticky top-0 z-40 backdrop-blur bg-white/3 dark:bg-black/20 border-b border-black/5 dark:border-white/10">
+    <nav
+      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
+        scrolled
+          ? "bg-[var(--bg)]/80 backdrop-blur-sm shadow-sm border-b border-black/10 dark:border-white/10"
+          : "bg-[var(--bg)]/90 backdrop-blur-lg border-b border-transparent"
+      }`}
+    >
       <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <div className="flex items-center gap-6">
           <ul className="hidden sm:flex gap-6 text-sm sm:text-base">
@@ -59,11 +76,12 @@ export default function NavBar() {
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
-                  className={`transition duration-200 pb-1 ${
-                    isActive(link.href)
+                  className={`transition-all duration-300 pb-1 px-2 rounded-md
+                    hover:scale-105 hover:px-4 hover:text-lg active:scale-105 active:px-4 active:text-lg
+                    ${isActive(link.href)
                       ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
-                      : "text-inherit hover:brightness-105"
-                  }`}
+                      : "text-inherit hover:brightness-105"}
+                  `}
                 >
                   {link.label}
                 </Link>
@@ -85,11 +103,12 @@ export default function NavBar() {
                 <Link
                   href={link.href}
                   aria-current={isActive(link.href) ? "page" : undefined}
-                  className={`transition duration-200 pb-1 ${
-                    isActive(link.href)
+                  className={`transition-all duration-300 pb-1 px-2 rounded-md
+                    hover:scale-105 hover:px-4 hover:text-lg active:scale-105 active:px-4 active:text-lg
+                    ${isActive(link.href)
                       ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
-                      : "text-inherit hover:brightness-105"
-                  }`}
+                      : "text-inherit hover:brightness-105"}
+                  `}
                 >
                   {link.label}
                 </Link>
@@ -150,7 +169,9 @@ export default function NavBar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`py-2 text-sm font-medium hover:text-[var(--accent)] transition duration-200 ${isActive(link.href) ? 'text-[var(--accent)]' : ''}`}
+                className={`py-2 text-sm font-medium transition-all duration-300 px-2 rounded-md
+                  hover:scale-105 hover:px-4 hover:text-lg active:scale-105 active:px-4 active:text-lg hover:text-[var(--accent)]
+                  ${isActive(link.href) ? 'text-[var(--accent)]' : ''}`}
               >
                 {link.label}
               </Link>

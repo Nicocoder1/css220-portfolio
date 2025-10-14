@@ -1,22 +1,28 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useState } from "react";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 const NAV_LINKS = [
-  { href: "#home", label: "Home" },
-  { href: "#projects", label: "Projects" },
-  { href: "#about", label: "About" },
-  { href: "#skills", label: "Skills" },
-  { href: "#contact", label: "Contact" },
+  { href: "/", label: "Home" },
+  { href: "/projects", label: "Projects" },
+  { href: "/about", label: "About" },
+  { href: "/uses", label: "Uses" },
 ];
+    // { href: "/contact", label: "Contact" },
 
 export default function NavBar() {
-  const [activeHash, setActiveHash] = useState<string>("#home");
+  const pathname = usePathname();
+  const activePath = pathname ?? "/";
+  const isActive = (href: string) => {
+    if (href === "/") return activePath === "/";
+    return activePath === href || activePath.startsWith(href + "/");
+  };
   const [theme, setTheme] = useState<string>(() => {
     if (typeof document === "undefined") return "dark";
     return document.documentElement.dataset.theme ?? "dark";
   });
-  const obsRef = useRef<IntersectionObserver | null>(null);
   const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
@@ -30,29 +36,6 @@ export default function NavBar() {
       document.documentElement.dataset.theme = current;
       setTheme(current);
     }
-
-    // Scroll spy using IntersectionObserver
-    const ids = NAV_LINKS.map((l) => l.href.replace("#", ""));
-    const sections = ids.map((id) => document.getElementById(id)).filter(Boolean) as HTMLElement[];
-
-    if (sections.length > 0) {
-      obsRef.current = new IntersectionObserver(
-        (entries) => {
-          entries.forEach((entry) => {
-            if (entry.isIntersecting) {
-              setActiveHash(`#${entry.target.id}`);
-            }
-          });
-        },
-        { root: null, rootMargin: "-40% 0px -50% 0px", threshold: [0, 0.25, 0.5, 0.75] }
-      );
-
-      sections.forEach((el) => obsRef.current?.observe(el));
-    }
-
-    return () => {
-      obsRef.current?.disconnect();
-    };
   }, []);
 
   function toggleTheme() {
@@ -73,41 +56,43 @@ export default function NavBar() {
           <ul className="hidden sm:flex gap-6 text-sm sm:text-base">
             {NAV_LINKS.slice(0, 2).map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                   className={`transition duration-200 pb-1 ${
-                    activeHash === link.href
+                    isActive(link.href)
                       ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
         </div>
 
         <div className="text-lg sm:text-xl font-bold tracking-wide">
-          <a href="#home" className="inline-block">
+          <Link href="/" className="inline-block">
             Nicolas Soria
-          </a>
+          </Link>
         </div>
 
         <div className="flex items-center gap-4">
           <ul className="hidden sm:flex gap-6 items-center text-sm sm:text-base">
             {NAV_LINKS.slice(2).map((link) => (
               <li key={link.href}>
-                <a
+                <Link
                   href={link.href}
+                  aria-current={isActive(link.href) ? "page" : undefined}
                   className={`transition duration-200 pb-1 ${
-                    activeHash === link.href
+                    isActive(link.href)
                       ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"
                   }`}
                 >
                   {link.label}
-                </a>
+                </Link>
               </li>
             ))}
           </ul>
@@ -161,14 +146,14 @@ export default function NavBar() {
         >
           <div className="px-6 py-4 flex flex-col gap-3">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className={`py-2 text-sm font-medium hover:text-[var(--accent)] transition duration-200 ${activeHash === link.href ? 'text-[var(--accent)]' : ''}`}
+                className={`py-2 text-sm font-medium hover:text-[var(--accent)] transition duration-200 ${isActive(link.href) ? 'text-[var(--accent)]' : ''}`}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </div>
         </div>

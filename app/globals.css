@@ -55,8 +55,15 @@ a { color: inherit; text-decoration: none; }
   box-shadow: 0 6px 18px rgba(2,6,23,0.45);
 }
 
-html {
-  scroll-behavior: smooth;
+/* Removed global smooth scrolling to avoid forcing anchor-only behavior. */
+
+/* Page fade transition utility (used for route transitions) */
+.page-fade {
+  animation: pageFadeIn 260ms ease-in-out both;
+}
+@keyframes pageFadeIn {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
 }
 
 /* Headings: use the foreground variable so they adapt to theme changes. */

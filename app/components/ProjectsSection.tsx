@@ -1,14 +1,15 @@
+import AnimatedSection from "./AnimatedSection";
+import ProjectCard from "./ProjectCard";
+import { projects } from "../data/projects";
+
 export default function ProjectsSection() {
   return (
-    <div className="grid gap-6 sm:grid-cols-2">
-      <article className="p-4 border rounded-lg">
-        <h3 className="font-semibold">Project One</h3>
-        <p className="text-sm text-gray-600 mt-2">A short description of project one.</p>
-      </article>
-      <article className="p-4 border rounded-lg">
-        <h3 className="font-semibold">Project Two</h3>
-        <p className="text-sm text-gray-600 mt-2">A short description of project two.</p>
-      </article>
-    </div>
+    <AnimatedSection className="py-2">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        {projects.map((p) => (
+          <ProjectCard key={p.title} title={p.title} description={p.description} tech={p.tech} image={p.image} href={p.href} />
+        ))}
+      </div>
+    </AnimatedSection>
   );
 }

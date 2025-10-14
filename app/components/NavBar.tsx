@@ -75,9 +75,9 @@ export default function NavBar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`transition pb-1 ${
+                  className={`transition duration-200 pb-1 ${
                     activeHash === link.href
-                      ? "text-[var(--accent)] border-b-2 border-[var(--accent)]"
+                      ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"
                   }`}
                 >
@@ -100,9 +100,9 @@ export default function NavBar() {
               <li key={link.href}>
                 <a
                   href={link.href}
-                  className={`transition pb-1 ${
+                  className={`transition duration-200 pb-1 ${
                     activeHash === link.href
-                      ? "text-[var(--accent)] border-b-2 border-[var(--accent)]"
+                      ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"
                   }`}
                 >
@@ -165,7 +165,7 @@ export default function NavBar() {
                 key={link.href}
                 href={link.href}
                 onClick={() => setIsOpen(false)}
-                className="py-2 text-sm font-medium hover:text-[var(--accent)] transition"
+                className={`py-2 text-sm font-medium hover:text-[var(--accent)] transition duration-200 ${activeHash === link.href ? 'text-[var(--accent)]' : ''}`}
               >
                 {link.label}
               </a>

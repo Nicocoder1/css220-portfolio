@@ -1,30 +1,33 @@
-"use client";
-import { useState, useRef } from "react";
-import { projects } from "../data/projects";
-import ProjectCard from "./ProjectCard";
-import { AnimatePresence, motion } from "framer-motion";
+"use client"; // This is a client-side component
+import { useState, useRef } from "react"; // React hooks
+import { projects } from "../data/projects"; // Project data
+import ProjectCard from "./ProjectCard"; // Card component
+import { AnimatePresence, motion } from "framer-motion"; // Animation
 
-const CARD_COUNT = projects.length;
+const CARD_COUNT = projects.length; // How many projects
 
+// Helper for looping carousel
 function mod(n: number, m: number) {
   return ((n % m) + m) % m;
 }
 
 export default function ProjectsCarousel() {
-  const [centerIdx, setCenterIdx] = useState(0);
-  const touchStartX = useRef<number | null>(null);
+  const [centerIdx, setCenterIdx] = useState(0); // Which card is in the middle
+  const touchStartX = useRef<number | null>(null); // For swipe
 
-  // Infinite carousel logic
+  // Get the index for a card, looping around
   const getCardIdx = (offset: number) => mod(centerIdx + offset, CARD_COUNT);
 
-  // Arrow controls
+  // Move carousel left
   const moveLeft = () => setCenterIdx((idx) => mod(idx - 1, CARD_COUNT));
+  // Move carousel right
   const moveRight = () => setCenterIdx((idx) => mod(idx + 1, CARD_COUNT));
 
-  // Touch/swipe support
+  // Start swipe
   const handleTouchStart = (e: React.TouchEvent) => {
     touchStartX.current = e.touches[0].clientX;
   };
+  // End swipe and move
   const handleTouchEnd = (e: React.TouchEvent) => {
     if (touchStartX.current === null) return;
     const delta = e.changedTouches[0].clientX - touchStartX.current;
@@ -33,10 +36,11 @@ export default function ProjectsCarousel() {
     touchStartX.current = null;
   };
 
+  // Render carousel
   return (
     <div className="w-full flex flex-col items-center">
       <div className="relative w-full flex items-center justify-center" style={{ minHeight: 320 }}>
-        {/* Left arrow */}
+        {/* Left arrow button */}
         <button
           aria-label="Previous project"
           onClick={moveLeft}
@@ -44,15 +48,15 @@ export default function ProjectsCarousel() {
         >
           &#8592;
         </button>
-        {/* Carousel cards */}
+        {/* The 3 cards in the carousel */}
         <div
           className="flex w-full items-center justify-center gap-1"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
           {[ -1, 0, 1 ].map((offset) => {
-            const idx = getCardIdx(offset);
-            const isCenter = offset === 0;
+            const idx = getCardIdx(offset); // Which card
+            const isCenter = offset === 0; // Is it the middle card?
             return (
               <motion.div
                 key={projects[idx].title}
@@ -67,7 +71,7 @@ export default function ProjectsCarousel() {
             );
           })}
         </div>
-        {/* Right arrow */}
+        {/* Right arrow button */}
         <button
           aria-label="Next project"
           onClick={moveRight}

@@ -79,7 +79,7 @@ export default function NavBar() {
                   className={`transition-all duration-300 pb-1 px-2 rounded-md
                     hover:scale-105 hover:px-4 hover:text-lg active:scale-105 active:px-4 active:text-lg
                     ${isActive(link.href)
-                      ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
+                      ? "text-[var(--accent)] bg-gradient-to-r from-[#00FF41]/80 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"}
                   `}
                 >
@@ -106,7 +106,7 @@ export default function NavBar() {
                   className={`transition-all duration-300 pb-1 px-2 rounded-md
                     hover:scale-105 hover:px-4 hover:text-lg active:scale-105 active:px-4 active:text-lg
                     ${isActive(link.href)
-                      ? "text-[var(--accent)] bg-gradient-to-r from-[var(--accent)]/70 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
+                      ? "text-[var(--accent)] bg-gradient-to-r from-[#00FF41]/80 to-transparent bg-[length:100%_2px] bg-[position:0_100%] bg-no-repeat"
                       : "text-inherit hover:brightness-105"}
                   `}
                 >

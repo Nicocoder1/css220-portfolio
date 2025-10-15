@@ -1,12 +1,15 @@
 "use client";
 import { useEffect, useRef } from "react";
 
+
 const MATRIX_COLORS = {
   base: "#0D0208",
   trail: "#003B00",
   glyph: "#008F11",
   glow: "#00FF41",
 };
+
+const RAIN_SPEED = 0.09; // 0.3 (slow) to 1.0 (fast)
 
 function getRandomGlyph() {
   const glyphs = "アァカサタナハマヤャラバパイィキブプエェケセテネゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -69,7 +72,7 @@ export default function MatrixRainBackground() {
         if (canvas && drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-        drops[i] += Math.random() * 1.5 + 0.8;
+  drops[i] += (Math.random() * 1.5 + 0.8) * RAIN_SPEED;
       }
     }
 

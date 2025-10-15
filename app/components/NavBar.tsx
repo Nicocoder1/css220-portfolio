@@ -200,3 +200,4 @@ export default function NavBar() {
     </nav>
   );
 }
+//this is the end of the nav bar component

@@ -11,10 +11,10 @@ export default function Footer() {
       <div className="h-px w-full bg-gradient-to-r from-[var(--accent)]/20 via-transparent to-[var(--accent)]/0" />
 
       <div className="max-w-5xl mx-auto py-6 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-[var(--muted)] text-center sm:text-left">
-          <span className="font-semibold">Nicolas Soria</span>
-          <span className="ml-2">— I am a computer scientist and software engineer who loves technology, AI, and innovation.</span>
-          <span className="block sm:inline sm:ml-2">© {year}</span>
+        <p className="text-sm text-[#00b86b] text-center sm:text-left">
+          <span className="font-semibold text-[#00b86b]">Nicolas Soria</span>
+          <span className="ml-2 text-[#00b86b]">— I am a computer scientist and software engineer who loves technology, AI, and innovation.</span>
+          <span className="block sm:inline sm:ml-2 text-[#00b86b]">© {year}</span>
         </p>
 
         <div className="flex items-center gap-4">

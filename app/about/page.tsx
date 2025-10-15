@@ -9,7 +9,7 @@ export default function AboutPage(): ReactElement {
   return (
     <main>
       <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
-no        {/* Removed Back to Home link */}
+  {/* Removed Back to Home link */}
         <AnimatedSection aria-label="About">
           <SectionHeading>About</SectionHeading>
           <AboutSection />

@@ -18,18 +18,6 @@ export default function Footer() {
         </p>
 
         <div className="flex items-center gap-4">
-          {/* Gmail icon triggers popup */}
-          <button
-            type="button"
-            aria-label="Email"
-            className="flex items-center gap-2 text-sm hover:brightness-105 transition-[filter] duration-150 text-[var(--muted)] bg-transparent border-none p-0"
-            onClick={() => setShowEmail(true)}
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" className="w-6 h-6" fill="currentColor" aria-hidden>
-              <rect width="32" height="32" rx="6" fill="#fff" />
-              <path d="M6 10v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2H8c-1.1 0-2 .9-2 2zm2 0l8 6 8-6v12H8V10z" fill="#EA4335" />
-            </svg>
-          </button>
 
           {/* ...existing Instagram and LinkedIn links... */}
       {/* Email popup modal */}
@@ -59,28 +47,38 @@ export default function Footer() {
       )}
 
 
-          <a
-            href="https://instagram.com/nikosoriag"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm hover:brightness-105 transition-[filter] duration-150 text-[var(--muted)]"
-            aria-label="Instagram"
-          >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
-              <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5A4.25 4.25 0 0 0 7.75 20.5h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5A4.25 4.25 0 0 0 16.25 3.5h-8.5zM12 7.25a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5zm0 1.5a3.25 3.25 0 1 0 0 6.5 3.25 3.25 0 0 0 0-6.5zM17.75 6a1.25 1.25 0 1 1 0 2.5 1.25 1.25 0 0 1 0-2.5z" />
-            </svg>
-          </a>
 
+          {/* LinkedIn icon */}
           <a
             href="https://linkedin.com/in/nikosoriag"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex items-center gap-2 text-sm hover:brightness-105 transition-[filter] duration-150 text-[var(--muted)]"
             aria-label="LinkedIn"
+            className="hover:brightness-105 transition duration-150"
           >
-            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" className="w-5 h-5" fill="currentColor" aria-hidden>
-              <path d="M4.98 3.5C4.98 4.88 3.86 6 2.49 6S0 4.88 0 3.5 1.12 1 2.49 1 4.98 2.12 4.98 3.5zM0 8h4v13H0V8zm7.5 0h3.8v1.8h.05c.53-1 1.82-2 3.75-2 4 0 4.75 2.63 4.75 6.05V21H17v-6.1c0-1.52-.03-3.48-2.12-3.48-2.12 0-2.44 1.66-2.44 3.38V21H7.5V8z" />
-            </svg>
+            <img src="/linkedin.png" alt="LinkedIn" className="w-8 h-8" />
+          </a>
+
+          {/* Gmail icon opens Gmail compose */}
+          <a
+            href="https://mail.google.com/mail/?view=cm&fs=1&to=nikosoriagomez@gmail.com"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Gmail"
+            className="hover:brightness-105 transition duration-150"
+          >
+            <img src="/gmail.png" alt="Gmail" className="w-8 h-8" />
+          </a>
+
+          {/* Instagram icon */}
+          <a
+            href="https://instagram.com/nikosoriag"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="hover:brightness-105 transition duration-150"
+          >
+            <img src="/instagram.png" alt="Instagram" className="w-8 h-8" />
           </a>
         </div>
       </div>

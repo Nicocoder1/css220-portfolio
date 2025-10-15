@@ -56,10 +56,10 @@ export default function ProjectsCarousel() {
             return (
               <motion.div
                 key={projects[idx].title}
-                initial={{ scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
-                animate={{ scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
-                transition={{ type: "spring", stiffness: 260, damping: 30 }}
-                className={`mx-[-2vw] ${isCenter ? "" : "pointer-events-none"}`}
+                initial={{ x: offset * 400, scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
+                animate={{ x: offset * 400, scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
+                transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
+                className={`mx-2 ${isCenter ? "" : "pointer-events-none"}`}
                 style={{ width: isCenter ? "32vw" : "24vw", minWidth: 260, maxWidth: 400 }}
               >
                 <ProjectCard {...projects[idx]} />

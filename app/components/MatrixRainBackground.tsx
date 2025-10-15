@@ -9,7 +9,7 @@ const MATRIX_COLORS = {
 };
 
 function getRandomGlyph() {
-  const glyphs = "アァカサタナハマヤャラワガザダバパイィキシチニヒミリヰギジヂビピウゥクスツヌフムユュルグズヅブプエェケセテネヘメレヱゲゼデベペオォコソトノホモヨョロヲゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+  const glyphs = "アァカサタナハマヤャラバパイィキブプエェケセテネゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   return glyphs[Math.floor(Math.random() * glyphs.length)];
 }
 

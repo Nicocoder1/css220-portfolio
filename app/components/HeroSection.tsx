@@ -9,7 +9,7 @@ export default function HeroSection() {
         initial={{ opacity: 0, y: 32 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative rounded-3xl border border-[var(--accent)] bg-[radial-gradient(circle at 50% 50%,#0D0208 55%,#003B00 70%,#008F11 85%,#00FF41 100%)] backdrop-blur-md shadow-[0_0_40px_#00FF41,0_0_0_4px_var(--accent)] flex items-center justify-center w-full max-w-[1200px] min-h-[60dvh] sm:min-h-[70dvh] md:min-h-[75dvh] lg:min-h-[80dvh] p-4 sm:p-6 overflow-hidden"
+  className="relative rounded-3xl border border-[var(--accent)] bg-[radial-gradient(600px 400px at 0% 0%,#00FF41 0%,rgba(0,143,17,0.7) 40%,rgba(13,2,8,0.92) 70%),radial-gradient(600px 400px at 100% 100%,#00FF41 0%,rgba(0,143,17,0.7) 40%,rgba(13,2,8,0.92) 70%)] backdrop-blur-md shadow-[0_0_40px_#00FF41,0_0_0_4px_var(--accent)] flex items-center justify-center w-full max-w-[1200px] min-h-[60dvh] sm:min-h-[70dvh] md:min-h-[75dvh] lg:min-h-[80dvh] p-4 sm:p-6 overflow-hidden"
       >
         <div className="absolute top-0 left-0 w-full h-1/3 pointer-events-none z-0" style={{background: "linear-gradient(180deg,rgba(120,180,255,0.18) 0%,rgba(255,255,255,0) 100%)"}}></div>
         <div className="relative z-10 w-full h-full flex flex-col items-center justify-center p-6 sm:p-12 lg:p-20 text-center">
@@ -26,7 +26,12 @@ export default function HeroSection() {
             <div className="flex items-center gap-4">
               <Link
                 href="#projects"
-                className="inline-block bg-[#00FF41] text-white font-bold px-4 py-2 rounded-md shadow-[0_0_16px_#00FF41] transition-all duration-200 focus:outline-none focus:ring-4 focus:ring-[#00FF41] hover:shadow-[0_0_32px_#00FF41,0_0_8px_#00FF41]"
+                className="inline-block bg-[#00FF41]/80 text-white font-bold px-4 py-2 rounded-md border border-white/20 backdrop-blur-lg shadow-[0_0_2px_#00FF41/25] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#00FF41]/20 hover:shadow-[0_0_8px_#00FF41/60,0_0_2px_#00FF41/40] hover:scale-105"
+                style={{
+                  background: "linear-gradient(135deg,rgba(0,255,65,0.85) 60%,rgba(255,255,255,0.18) 100%)",
+                  WebkitBackdropFilter: "blur(12px)",
+                  backdropFilter: "blur(12px)",
+                }}
               >
                 View Projects
               </Link>

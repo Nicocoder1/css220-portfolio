@@ -2,11 +2,11 @@ import Image from "next/image"; // For project images
 
 // Props for the project card
 interface Props {
-  title: string; // Project title
-  description: string; // Project description
-  tech: string[]; // Technologies used
-  image?: string; // Image URL
-  href?: string; // Link to project
+  title: string; 
+  description: string;
+  tech: string[];
+  image?: string;
+  href?: string;
 }
 
 // Card for each project

@@ -83,6 +83,8 @@ export default function NavBar() {
       }}
     >
   {/* Vertical gradient highlight at top, fading down like hero section */}
+  {/* Slightly light blue vertical gradient highlight at top, fading down like hero section */}
+  <div className="absolute top-0 left-0 w-full h-7 pointer-events-none z-0" style={{background: "linear-gradient(180deg,rgba(120,180,255,0.18) 0%,rgba(255,255,255,0) 100%)"}}></div>
   <div className="h-px w-full bg-[#003B00] absolute top-full left-0" />
       <div className="relative z-10 max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <div className="flex items-center gap-6">

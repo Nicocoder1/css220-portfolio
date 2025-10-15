@@ -4,6 +4,7 @@ import "./globals.css";
 import NavBar from "./components/NavBar";
 import Footer from "./components/Footer";
 import PageFade from "./components/PageFade";
+import ClientBackgroundLayer from "./components/ClientBackgroundLayer";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -28,6 +29,8 @@ export default function RootLayout({
   return (
     <html lang="en" data-theme="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}>
+        {/* Matrix rain background behind all content */}
+        <ClientBackgroundLayer />
         <NavBar />
         <div className="flex-1 flex flex-col">
           <PageFade>

@@ -23,7 +23,7 @@ export default function HeroSection() {
           <p className="text-xs sm:text-sm text-[var(--muted)] mb-2 italic font-light">Hi, my name is</p>
           {/* Name and title */}
           <h1 className="text-5xl sm:text-6xl font-black leading-tight text-[var(--fg)] dark:text-[var(--fg)]">
-            Nicolas Soria  Web Developer in training
+            Nicolas Soria, I am a Full Stack Developer in taining
           </h1>
           {/* Description */}
           <p className="mt-4 max-w-3xl text-[var(--fg)]/85 px-4">

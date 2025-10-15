@@ -63,7 +63,10 @@ export default function NavBar() {
 
   function toggleTheme() {
     const next = theme === "dark" ? "light" : "dark";
-    document.documentElement.dataset.theme = next;
+    // Update <html> element's data-theme attribute for CSS variables
+    if (typeof window !== "undefined") {
+      document.documentElement.setAttribute("data-theme", next);
+    }
     try {
       localStorage.setItem("theme", next);
     } catch {

@@ -14,8 +14,8 @@ export default function AboutSection() {
 
       <div className="sm:col-span-1 flex justify-center sm:justify-end">
         {/* Profile image from public folder */}
-        <div className="w-40 h-40 rounded-full overflow-hidden border border-white/10 bg-black/10 flex items-center justify-center">
-          <Image src="/nicolasfoto.jpg" alt="Nicolas Soria Gomez" width={160} height={160} />
+        <div className="w-64 h-64 rounded-full overflow-hidden border border-white/10 bg-black/10 flex items-center justify-center">
+          <Image src="/nicolasfoto.jpg" alt="Nicolas Soria Gomez" width={256} height={256} />
         </div>
       </div>
     </div>

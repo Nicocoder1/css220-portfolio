@@ -1,3 +1,50 @@
+/* Matrix theme colors for high contrast and readability */
+/* Matrix theme colors for high contrast and readability */
+:root {
+  --bg: #0b0b12; /* Matrix dark background */
+  --fg: #cfd8dc; /* Metallic silver for main text in dark mode */
+  --muted: #b6ffb6; /* Light green for muted text */
+  --card: #10121a;
+  --accent: #00FF41; /* Matrix green accent */
+  --ring: rgba(0,255,65,.3);
+}
+[data-theme="light"] {
+  --bg: #e6ffe6; /* Very light green background */
+  --fg: #003B00; /* Deep green for text */
+  --muted: #007f2f; /* Muted green for secondary text */
+  --card: #f6fff6;
+  --accent: #00FF41; /* Matrix green accent */
+  --ring: rgba(0,255,65,.2);
+}
+html, body {
+  height: 100%;
+}
+
+body {
+  background: var(--bg);
+  color: var(--fg);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+h1, h2, h3, h4, h5, h6 {
+  color: var(--fg);
+  transition: color .3s ease;
+}
+/* Card / surface utility using our variables */
+.card {
+  background: var(--card);
+  color: var(--fg);
+  box-shadow: 0 6px 18px rgba(2,6,23,0.45);
+}
+
+/* Ensure all text is readable in both themes */
+p, span, li, label, input, textarea, button {
+  color: var(--fg);
+}
+
+.muted, .text-muted {
+  color: var(--muted) !important;
+}
 @import "tailwindcss";
 
 :root {
@@ -54,8 +101,6 @@ a { color: inherit; text-decoration: none; }
   color: var(--fg);
   box-shadow: 0 6px 18px rgba(2,6,23,0.45);
 }
-
-/* Removed global smooth scrolling to avoid forcing anchor-only behavior. */
 
 /* Page fade transition utility (used for route transitions) */
 .page-fade {

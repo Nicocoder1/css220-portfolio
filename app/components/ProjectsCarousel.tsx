@@ -46,7 +46,7 @@ export default function ProjectsCarousel() {
         </button>
         {/* Carousel cards */}
         <div
-          className="flex w-full items-center justify-center gap-0"
+          className="flex w-full items-center justify-center gap-1"
           onTouchStart={handleTouchStart}
           onTouchEnd={handleTouchEnd}
         >
@@ -56,11 +56,11 @@ export default function ProjectsCarousel() {
             return (
               <motion.div
                 key={projects[idx].title}
-                initial={{ x: offset * 400, scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
-                animate={{ x: offset * 400, scale: isCenter ? 1 : 0.85, opacity: isCenter ? 1 : 0.6, zIndex: isCenter ? 2 : 1 }}
+                initial={{ x: offset * 80, scale: isCenter ? 1 : 0.75, opacity: isCenter ? 1 : 0.5, zIndex: isCenter ? 2 : 1 }}
+                animate={{ x: offset * 80, scale: isCenter ? 1 : 0.75, opacity: isCenter ? 1 : 0.5, zIndex: isCenter ? 2 : 1 }}
                 transition={{ type: "tween", ease: "easeInOut", duration: 0.5 }}
-                className={`mx-2 ${isCenter ? "" : "pointer-events-none"}`}
-                style={{ width: isCenter ? "32vw" : "24vw", minWidth: 260, maxWidth: 400 }}
+                className={`${isCenter ? "" : "pointer-events-none"}`}
+                style={{ width: 400, height: 400, minWidth: 400, maxWidth: 400, minHeight: 400, maxHeight: 400 }}
               >
                 <ProjectCard {...projects[idx]} />
               </motion.div>

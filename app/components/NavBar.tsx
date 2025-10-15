@@ -1,6 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react"; // Removed duplicate import
+import { useEffect, useState, useRef } from "react";
+// ...existing code...
+// ...existing code...
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 
@@ -13,6 +15,9 @@ const NAV_LINKS = [
     // { href: "/contact", label: "Contact" },
 
 export default function NavBar() {
+  // Track scroll direction for hide/reveal
+  const [hideNav, setHideNav] = useState(false);
+  const lastScrollY = useRef(0);
   const pathname = usePathname();
   const activePath = pathname ?? "/";
   const isActive = (href: string) => {
@@ -27,9 +32,16 @@ export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
-    // Scroll effect for navbar
+    // Scroll effect for navbar: blur and hide on scroll down
     const handleScroll = () => {
       setScrolled(window.scrollY > 0);
+      const threshold = 50;
+      if (window.scrollY > lastScrollY.current && window.scrollY > threshold) {
+        setHideNav(true); // scrolling down
+      } else {
+        setHideNav(false); // scrolling up or near top
+      }
+      lastScrollY.current = window.scrollY;
     };
     window.addEventListener("scroll", handleScroll);
     handleScroll(); // set initial state
@@ -62,14 +74,16 @@ export default function NavBar() {
 
   return (
     <nav
-      className={`fixed top-0 left-0 w-full z-50 transition-all duration-500 ${
-        scrolled
-          ? "bg-[var(--bg)]/60 backdrop-blur-sm shadow-sm border-b border-black/10 dark:border-white/10"
-          : "bg-[var(--bg)]/40 backdrop-blur-lg border-b border-transparent"
-      } relative`}
+      className={`fixed top-0 left-0 w-full z-50 bg-[rgba(0,0,0,0.45)] backdrop-blur-md border-b border-[#78b4ff]/20 shadow-[0_0_10px_#00FF41]/20 transition-all duration-300 transition-transform ease-in-out relative`}
+      style={{
+        WebkitBackdropFilter: 'blur(12px)',
+        backdropFilter: 'blur(12px)',
+        transition: 'transform 0.3s ease-in-out, background 0.3s, backdrop-filter 0.3s',
+        transform: hideNav ? 'translateY(-100%)' : 'translateY(0)'
+      }}
     >
-      {/* Vertical gradient highlight at top, fading down like hero section */}
-      <div className="absolute top-0 left-0 w-full h-7 pointer-events-none z-0" style={{background: "linear-gradient(180deg,rgba(120,180,255,0.18) 0%,rgba(255,255,255,0) 100%)"}}></div>
+  {/* Vertical gradient highlight at top, fading down like hero section */}
+  <div className="h-px w-full bg-[#003B00] absolute top-full left-0" />
       <div className="relative z-10 max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <div className="flex items-center gap-6">
           <ul className="hidden sm:flex gap-6 text-sm sm:text-base">

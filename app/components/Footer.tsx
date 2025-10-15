@@ -7,14 +7,14 @@ export default function Footer() {
 
   return (
     <footer className="w-full mt-8">
-      {/* thin gradient border */}
-      <div className="h-px w-full bg-gradient-to-r from-[var(--accent)]/20 via-transparent to-[var(--accent)]/0" />
+  {/* Solid green line to separate footer from page */}
+  <div className="h-px w-full bg-[#003B00]" />
 
       <div className="max-w-5xl mx-auto py-6 px-4 sm:px-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-sm text-[#00b86b] text-center sm:text-left">
-          <span className="font-semibold text-[#00b86b]">Nicolas Soria</span>
-          <span className="ml-2 text-[#00b86b]">— I am a computer scientist and software engineer who loves technology, AI, and innovation.</span>
-          <span className="block sm:inline sm:ml-2 text-[#00b86b]">© {year}</span>
+        <p className="text-sm text-white text-center sm:text-left">
+          <span className="font-semibold text-white">Nicolas Soria</span>
+          <span className="ml-2 text-white">— I am a computer scientist and software engineer who loves technology, AI, and innovation.</span>
+          <span className="block sm:inline sm:ml-2 text-white">© {year}</span>
         </p>
 
         <div className="flex items-center gap-4">

@@ -66,9 +66,11 @@ export default function NavBar() {
         scrolled
           ? "bg-[var(--bg)]/60 backdrop-blur-sm shadow-sm border-b border-black/10 dark:border-white/10"
           : "bg-[var(--bg)]/40 backdrop-blur-lg border-b border-transparent"
-      }`}
+      } relative`}
     >
-      <div className="max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
+      {/* Vertical gradient highlight at top, fading down like hero section */}
+      <div className="absolute top-0 left-0 w-full h-7 pointer-events-none z-0" style={{background: "linear-gradient(180deg,rgba(120,180,255,0.18) 0%,rgba(255,255,255,0) 100%)"}}></div>
+      <div className="relative z-10 max-w-6xl mx-auto px-6 flex items-center justify-between h-16">
         <div className="flex items-center gap-6">
           <ul className="hidden sm:flex gap-6 text-sm sm:text-base">
             {NAV_LINKS.slice(0, 2).map((link) => (

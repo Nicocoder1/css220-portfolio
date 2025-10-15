@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useRef } from "react";
 
+
 const MATRIX_COLORS = {
   base: "#0D0208",
   trail: "#003B00",
@@ -8,12 +9,14 @@ const MATRIX_COLORS = {
   glow: "#00FF41",
 };
 
+const DEFAULT_RAIN_SPEED = 0.2; // 0.3 (slow) to 1.0 (fast)
+
 function getRandomGlyph() {
   const glyphs = "アァカサタナハマヤャラバパイィキブプエェケセテネゴゾドボポヴ0123456789ABCDEFGHIJKLMNOPQRSTUVWXYZ";
   return glyphs[Math.floor(Math.random() * glyphs.length)];
 }
 
-export default function MatrixRainBackground() {
+export default function MatrixRainBackground({ rainSpeed = DEFAULT_RAIN_SPEED }: { rainSpeed?: number }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
@@ -69,7 +72,7 @@ export default function MatrixRainBackground() {
         if (canvas && drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
           drops[i] = 0;
         }
-        drops[i] += Math.random() * 1.5 + 0.8;
+  drops[i] += (Math.random() * 1.5 + 0.8) * rainSpeed;
       }
     }
 

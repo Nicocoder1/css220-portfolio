@@ -35,7 +35,7 @@ export default function HeroSection() {
           <div className="mt-6 flex flex-col items-center justify-center gap-0">
             <div className="flex items-center gap-4">
               <Link
-                href="#projects"
+                href="/projects"
                 className="inline-block bg-[#00FF41]/80 text-white font-bold px-4 py-2 rounded-md border border-white/20 backdrop-blur-lg shadow-[0_0_2px_#00FF41/25] transition-all duration-200 focus:outline-none focus:ring-2 focus:ring-[#00FF41]/20 hover:shadow-[0_0_8px_#00FF41/60,0_0_2px_#00FF41/40] hover:scale-105"
                 style={{
                   background: "linear-gradient(135deg,rgba(0,255,65,0.85) 60%,rgba(255,255,255,0.18) 100%)",

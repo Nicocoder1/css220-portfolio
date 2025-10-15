@@ -2,7 +2,7 @@
 /* Matrix theme colors for high contrast and readability */
 :root {
   --bg: #0b0b12; /* Matrix dark background */
-  --fg: #cfd8dc; /* Metallic silver for main text in dark mode */
+  --fg: #D9D9D9; /* Light silver for main text in dark mode */
   --muted: #b6ffb6; /* Light green for muted text */
   --card: #10121a;
   --accent: #00FF41; /* Matrix green accent */
